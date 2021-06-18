@@ -1,6 +1,7 @@
 package com.blackfish.util;
 
 
+import cn.hutool.crypto.SecureUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import sun.security.provider.MD5;
@@ -40,8 +41,9 @@ public class CommonsUtils {
      * @param phoneNumber 手机号
      * @return 返回加密后的密码
      */
-    public static String encryptPassword(String password, String phoneNumber){ //userId作为盐值
-        return String.valueOf(new SimpleHash(password, phoneNumber, 1024));
+    public static String encryptPassword(String password, String phoneNumber){
+        ;      //userId作为盐值
+        return SecureUtil.md5(password+phoneNumber);
     }
 
     /**
@@ -50,5 +52,8 @@ public class CommonsUtils {
     public static Integer getUserId(HttpServletRequest request){
         return Integer.parseInt(request.getAttribute("Constant.USER_ID").toString());
     }
+
+
+
 
 }
