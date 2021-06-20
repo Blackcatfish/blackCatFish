@@ -1,6 +1,7 @@
 package com.blackfish.service;
 
 import com.blackfish.vo.R;
+import com.blackfish.vo.TokenVO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -14,7 +15,7 @@ public interface UserService {
     @Transactional
     R register(String userId, String userName, String password, String remark);
 
-    String passWordLogin(String userId, String passWord);
+    TokenVO passWordLogin(String userId, String passWord);
 
     void sendVerificationCode(String userId);
 

@@ -1,8 +1,13 @@
 package com.blackfish.service.impl;
 
+import com.blackfish.config.JWTUtil;
+import com.blackfish.entity.User;
+import com.blackfish.mapper.UserMapper;
 import com.blackfish.service.UserDomainService;
 import com.blackfish.service.UserService;
+import com.blackfish.util.CommonsUtils;
 import com.blackfish.vo.R;
+import com.blackfish.vo.TokenVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +24,21 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDomainService userDomainService;
+    @Autowired
+    private UserMapper userMapper;
+
 
 
     @Override
-    public String passWordLogin(String userId, String passWord) {
+    public TokenVO passWordLogin(String userId, String passWord) {
 //        return userDomainService.passwordLogin(userId,passWord);
-        return "";
+        User user = userMapper.selectById(userId);
+        if (user!=null){
+            if (user.getPassword().equals(CommonsUtils.encryptPassword(passWord,userId))){
+                return JWTUtil.generateToken(user);
+            }
+        }
+        return null;
     }
 
     @Override

@@ -29,15 +29,18 @@ public class ShiroConfig {
 
         // 设置自定义filter
         HashMap<String, javax.servlet.Filter> filters = new HashMap();
-        filters.put("JWTFilter", new ShiroFilter());
+        filters.put("ShiroFilter", new ShiroFilter());
         shiroFilterFactoryBean.setFilters(filters);
 
         // 设置url拦截
-        filterChainDefinitionMap.put("/black/user/login/**", "anon");
-        filterChainDefinitionMap.put("/black/user/register/**", "anon");
-//        filterChainDefinitionMap.put("/sys/authc/getToken/**", "anon");
-//        filterChainDefinitionMap.put("/black/doc.html", "JWTFilter");
-        filterChainDefinitionMap.put("/black/doc.html", "anon");
+        filterChainDefinitionMap.put("/user/login", "anon");
+        filterChainDefinitionMap.put("/user/register", "anon");
+        filterChainDefinitionMap.put("/doc.html", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/configuration/ui", "anon");
+        filterChainDefinitionMap.put("/swagger-resources", "anon");
+        filterChainDefinitionMap.put("../*.html", "anon");
+        filterChainDefinitionMap.put("/v2/api-docs", "anon");
+        filterChainDefinitionMap.put("/**", "ShiroFilter");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;

@@ -38,12 +38,12 @@ public class CommonsUtils {
     /**
      * 使用md5加密
      * @param password 需要加密的密码
-     * @param phoneNumber 手机号
+     * @param userId 手机号
      * @return 返回加密后的密码
      */
-    public static String encryptPassword(String password, String phoneNumber){
+    public static String encryptPassword(String password, String userId){
         ;      //userId作为盐值
-        return SecureUtil.md5(password+phoneNumber);
+        return SecureUtil.md5(password+userId);
     }
 
     /**

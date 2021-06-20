@@ -29,15 +29,15 @@ public class ShiroFilter extends BasicHttpAuthenticationFilter {
      */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-
+        HttpServletRequest httpServletRequest=(HttpServletRequest)request;
         logger.info("进入filter");
+        logger.info("请求路由{},{}",httpServletRequest.getRequestURI(),httpServletRequest.getRequestURL());
         // 如果没有携带token
         if (!isLoginAttempt(request, response)) {
             publicLoginErrorController(response, "没有用于验证的token, 请重新登陆");
             return false;
         }
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         String token = httpServletRequest.getHeader(CommonConstant.HEADER_JWT_TOKEN_NAME);
         // 解析token中的信息
@@ -106,7 +106,7 @@ public class ShiroFilter extends BasicHttpAuthenticationFilter {
         try {
             HttpServletResponse response1 = (HttpServletResponse) response;
             response1.setContentType("application/json;charset=UTF-8");
-            response1.getWriter().write(JSONUtil.toJsonStr("登陆超时"));
+            response1.getWriter().write(JSONUtil.toJsonStr(message));
         } catch (IOException e) {
             logger.error("IOException");
         }
