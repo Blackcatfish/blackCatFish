@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackfish.mapper.SysPermissionsDao">
+  <resultMap id="BaseResultMap" type="com.blackfish.entity.SysPermissions">
+    <id column="perId" jdbcType="VARCHAR" property="perId" />
+    <result column="permissionsName" jdbcType="VARCHAR" property="permissionsName" />
+    <result column="perRemarks" jdbcType="VARCHAR" property="perRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    perId, permissionsName, perRemarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permissions
+    where perId = #{perId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_permissions
+    where perId = #{perId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="perId" keyProperty="perId" parameterType="com.blackfish.entity.SysPermissions" useGeneratedKeys="true">
+    insert into sys_permissions (permissionsName, perRemarks)
+    values (#{permissionsName,jdbcType=VARCHAR}, #{perRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="perId" keyProperty="perId" parameterType="com.blackfish.entity.SysPermissions" useGeneratedKeys="true">
+    insert into sys_permissions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionsName != null">
+        permissionsName,
+      </if>
+      <if test="perRemarks != null">
+        perRemarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionsName != null">
+        #{permissionsName,jdbcType=VARCHAR},
+      </if>
+      <if test="perRemarks != null">
+        #{perRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.entity.SysPermissions">
+    update sys_permissions
+    <set>
+      <if test="permissionsName != null">
+        permissionsName = #{permissionsName,jdbcType=VARCHAR},
+      </if>
+      <if test="perRemarks != null">
+        perRemarks = #{perRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where perId = #{perId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blackfish.entity.SysPermissions">
+    update sys_permissions
+    set permissionsName = #{permissionsName,jdbcType=VARCHAR},
+      perRemarks = #{perRemarks,jdbcType=VARCHAR}
+    where perId = #{perId,jdbcType=VARCHAR}
+  </update>
+</mapper>

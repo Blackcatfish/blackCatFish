@@ -39,7 +39,9 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/swagger-resources/configuration/ui", "anon");
         filterChainDefinitionMap.put("/swagger-resources", "anon");
         filterChainDefinitionMap.put("../*.html", "anon");
-        filterChainDefinitionMap.put("/v2/api-docs", "anon");
+        filterChainDefinitionMap.put("/v2/**", "anon");
+        filterChainDefinitionMap.put("/webjars/**", "anon");
+        filterChainDefinitionMap.put("/favicon.ico", "anon");
         filterChainDefinitionMap.put("/**", "ShiroFilter");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 

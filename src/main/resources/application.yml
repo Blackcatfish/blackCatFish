@@ -8,9 +8,9 @@ spring:
   #指定数据库相关信息
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://xxx.xx.xx:3306/black_cat_fish?useUnicode=true&characterEncoding=utf-8&autoReconnect=
+    url: jdbc:mysql://101.132.36.16:3306/black_cat_fish?useUnicode=true&characterEncoding=utf-8&autoReconnect=
     username: root
-    password: xxx
+    password: 1qaz@WSX
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 5
@@ -22,8 +22,10 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: com.cmdc.domain.entity
+  type-aliases-package: com.blackfish.entity
   configuration:
     map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

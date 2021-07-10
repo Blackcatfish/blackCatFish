@@ -8,7 +8,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 public class JWTUtil {
@@ -29,13 +28,13 @@ public class JWTUtil {
      */
     public static TokenVO generateToken(User jwtInfo) {
         try {
-            Date expireDate = new Date(System.currentTimeMillis() + EFFECT_TIME*1000);
+            Date expireDate = new Date(System.currentTimeMillis() + EFFECT_TIME * 1000);
             Algorithm algorithm = Algorithm.HMAC256(SECRETKEY);
             // 附带username信息
             String token = Jwts.builder()
                     .setExpiration(expireDate)
                     .setSubject("black")
-                    .claim(CommonConstant.JWT_TOKEN_USERNAME, jwtInfo.getUserName())
+                    .claim(CommonConstant.JWT_TOKEN_USERNAME, jwtInfo.getUserId())
                     //到期时间
                     .signWith(SignatureAlgorithm.HS256, SECRETKEY)
                     .compact();

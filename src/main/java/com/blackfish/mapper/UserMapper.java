@@ -1,5 +1,6 @@
 package com.blackfish.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.blackfish.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,7 +12,7 @@ import java.util.LinkedHashMap;
  * @date : 9:22 2020/7/1
  */
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     User selectById(@Param("userId") String userId);
 

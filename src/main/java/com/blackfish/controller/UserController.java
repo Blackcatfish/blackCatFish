@@ -7,6 +7,7 @@ import com.blackfish.vo.TokenVO;
 import com.blackfish.vo.UserLoginVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +43,9 @@ public class UserController {
 
         return userService.passWordLogin(userLoginVo.getUserId(), userLoginVo.getPassword());
     }
+
     @PostMapping(value = "/test", name = "用户登陆")
+    @RequiresRoles("admin")
     @ApiOperation("登陆验证")
     public String test() {
 

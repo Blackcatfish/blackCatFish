@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackfish.mapper.SysRoleDao">
+  <resultMap id="BaseResultMap" type="com.blackfish.entity.SysRole">
+    <id column="roleId" jdbcType="VARCHAR" property="roleId" />
+    <result column="roleName" jdbcType="VARCHAR" property="roleName" />
+    <result column="roleRemarks" jdbcType="VARCHAR" property="roleRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    roleId, roleName, roleRemarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where roleId = #{roleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sys_role
+    where roleId = #{roleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="roleId" keyProperty="roleId" parameterType="com.blackfish.entity.SysRole" useGeneratedKeys="true">
+    insert into sys_role (roleName, roleRemarks)
+    values (#{roleName,jdbcType=VARCHAR}, #{roleRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="roleId" keyProperty="roleId" parameterType="com.blackfish.entity.SysRole" useGeneratedKeys="true">
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleName != null">
+        roleName,
+      </if>
+      <if test="roleRemarks != null">
+        roleRemarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleRemarks != null">
+        #{roleRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.entity.SysRole">
+    update sys_role
+    <set>
+      <if test="roleName != null">
+        roleName = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleRemarks != null">
+        roleRemarks = #{roleRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where roleId = #{roleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blackfish.entity.SysRole">
+    update sys_role
+    set roleName = #{roleName,jdbcType=VARCHAR},
+      roleRemarks = #{roleRemarks,jdbcType=VARCHAR}
+    where roleId = #{roleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -30,7 +30,7 @@ public class CommonConstant {
     // 菜单类型为按钮
     public static final String MENU_TYPE_BUTTON = "2";
 
-    public static final String JWT_TOKEN_USERNAME = "userName";
+    public static final String JWT_TOKEN_USERNAME = "userId";
 
     public static final String JWT_TOKEN_MAP_KEY_TOKEN = "token";
 
