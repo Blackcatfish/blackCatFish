@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * @author : zly
  * @date : 10:37 2020/7/1
  */
-@Getter
+@Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor

@@ -7,6 +7,7 @@ import com.blackfish.vo.TokenVO;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.Date;
 
@@ -26,6 +27,7 @@ public class JWTUtil {
      * @param jwtInfo
      * @return
      */
+
     public static TokenVO generateToken(User jwtInfo) {
         try {
             Date expireDate = new Date(System.currentTimeMillis() + EFFECT_TIME * 1000);

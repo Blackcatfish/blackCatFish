@@ -1,6 +1,7 @@
 package com.blackfish.controller;
 
 import com.blackfish.dto.RegisterDTO;
+import com.blackfish.entity.User;
 import com.blackfish.service.UserService;
 import com.blackfish.vo.R;
 import com.blackfish.vo.TokenVO;
@@ -33,7 +34,8 @@ public class UserController {
     @PostMapping(value = "/register", name = "用户注册")
     @ApiOperation("用户注册")
     public R userRegister(@RequestBody @Valid RegisterDTO registerDTO) {
-        userService.register(registerDTO.getUserId(), registerDTO.getUserName(), registerDTO.getPassword(), registerDTO.getRemark());
+        User user = User.builder().userId(registerDTO.getUserId()).userName(registerDTO.getUserName()).password(registerDTO.getPassword()).userRemarks(registerDTO.getRemark()).build();
+        userService.register(user);
         return R.ok();
     }
 

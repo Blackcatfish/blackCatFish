@@ -26,8 +26,8 @@ import java.net.ConnectException;
 import java.sql.SQLException;
 
 
-//@ControllerAdvice
-//@Transactional
+@ControllerAdvice
+@Transactional
 public class CommonExceptionHandlers {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommonExceptionHandlers.class);

@@ -9,6 +9,7 @@ import com.blackfish.util.CommonsUtils;
 import com.blackfish.vo.R;
 import com.blackfish.vo.TokenVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -28,13 +29,13 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
 
-
     @Override
+    @Cacheable(value = "token", key = "#userId", unless = "#result=null")
     public TokenVO passWordLogin(String userId, String passWord) {
 //        return userDomainService.passwordLogin(userId,passWord);
         User user = userMapper.selectById(userId);
-        if (user!=null){
-            if (user.getPassword().equals(CommonsUtils.encryptPassword(passWord,userId))){
+        if (user != null) {
+            if (user.getPassword().equals(CommonsUtils.encryptPassword(passWord, userId))) {
                 return JWTUtil.generateToken(user);
             }
         }
@@ -42,9 +43,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public R register(String userId, String userName, String password, String remark) {
+    public R register(User user) {
         //现在开始用户注册
-        userDomainService.register(userId,userName,password,remark);
+        userDomainService.register(user);
         return R.ok();
     }
 
