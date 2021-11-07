@@ -8,9 +8,9 @@ spring:
   #指定数据库相关信息
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://101.132.36.16:3306/black_cat_fish?useUnicode=true&characterEncoding=utf-8&autoReconnect=
+    url: jdbc:mysql://xxx:3306/black_cat_fish?useUnicode=true&characterEncoding=utf-8&autoReconnect=
     username: root
-    password: 1qaz@WSX
+    password: password
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 5
@@ -25,9 +25,9 @@ spring:
     database: 0
     host: 101.132.36.16
     port: 6380
-  data:
-    mongodb:
-      uri: mongodb://admin:123456@101.132.36.16:27017/db1
+#  data:
+#    mongodb:
+#      uri: mongodb://admin:123456@101.132.36.16:27017/db1
 
 
 mybatis-plus:
