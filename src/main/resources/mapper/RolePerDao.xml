@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackfish.mapper.RolePerDao">
-  <resultMap id="BaseResultMap" type="com.blackfish.entity.RolePer">
+<mapper namespace="com.blackfish.shiro.mapper.RolePerDao">
+  <resultMap id="BaseResultMap" type="com.blackfish.shiro.entity.RolePer">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="roleId" jdbcType="VARCHAR" property="roleId" />
     <result column="perId" jdbcType="VARCHAR" property="perId" />
@@ -19,11 +19,11 @@
     delete from role_per
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.blackfish.entity.RolePer" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.blackfish.shiro.entity.RolePer" useGeneratedKeys="true">
     insert into role_per (roleId, perId)
     values (#{roleId,jdbcType=VARCHAR}, #{perId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.blackfish.entity.RolePer" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.blackfish.shiro.entity.RolePer" useGeneratedKeys="true">
     insert into role_per
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
@@ -42,7 +42,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.entity.RolePer">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.shiro.entity.RolePer">
     update role_per
     <set>
       <if test="roleId != null">
@@ -54,7 +54,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.blackfish.entity.RolePer">
+  <update id="updateByPrimaryKey" parameterType="com.blackfish.shiro.entity.RolePer">
     update role_per
     set roleId = #{roleId,jdbcType=VARCHAR},
       perId = #{perId,jdbcType=VARCHAR}

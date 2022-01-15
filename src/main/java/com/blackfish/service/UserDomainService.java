@@ -1,10 +1,10 @@
 package com.blackfish.service;
 
 
-import com.blackfish.entity.User;
-import com.blackfish.exception.CustomizeException;
-import com.blackfish.mapper.UserMapper;
-import com.blackfish.mapper.UserRoleMapper;
+import com.blackfish.shiro.entity.User;
+import com.blackfish.shiro.exception.CustomizeException;
+import com.blackfish.shiro.mapper.UserMapper;
+import com.blackfish.shiro.mapper.UserRoleMapper;
 import com.blackfish.util.CommonsUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

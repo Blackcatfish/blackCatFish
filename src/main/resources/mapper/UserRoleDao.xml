@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackfish.mapper.UserRoleDao">
-  <resultMap id="BaseResultMap" type="com.blackfish.entity.UserRole">
+<mapper namespace="com.blackfish.shiro.mapper.UserRoleDao">
+  <resultMap id="BaseResultMap" type="com.blackfish.shiro.entity.UserRole">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="userId" jdbcType="VARCHAR" property="userId" />
     <result column="roleId" jdbcType="VARCHAR" property="roleId" />
@@ -19,11 +19,11 @@
     delete from user_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.blackfish.entity.UserRole" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.blackfish.shiro.entity.UserRole" useGeneratedKeys="true">
     insert into user_role (userId, roleId)
     values (#{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.blackfish.entity.UserRole" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.blackfish.shiro.entity.UserRole" useGeneratedKeys="true">
     insert into user_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -42,7 +42,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.entity.UserRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.shiro.entity.UserRole">
     update user_role
     <set>
       <if test="userId != null">
@@ -54,7 +54,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.blackfish.entity.UserRole">
+  <update id="updateByPrimaryKey" parameterType="com.blackfish.shiro.entity.UserRole">
     update user_role
     set userId = #{userId,jdbcType=VARCHAR},
       roleId = #{roleId,jdbcType=VARCHAR}

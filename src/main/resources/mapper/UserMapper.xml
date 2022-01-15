@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackfish.mapper.UserMapper">
+<mapper namespace="com.blackfish.shiro.mapper.UserMapper">
 
     <!--根据用户的userId查询出此用户-->
-    <select id="selectById" parameterType="String" resultType="com.blackfish.entity.User">
+    <select id="selectById" parameterType="String" resultType="com.blackfish.shiro.entity.User">
         select u.userId, u.userName, u.password, u.userRemarks
         from sys_user as u
         where u.userId = #{userId}
     </select>
 
     <!--根据用户的userName查询出此用户-->
-    <select id="selectByName" parameterType="String" resultType="com.blackfish.entity.User">
+    <select id="selectByName" parameterType="String" resultType="com.blackfish.shiro.entity.User">
         select u.userId, u.userName, u.password, u.userRemarks
         from sys_user as u
         where u.userName = #{userName}
@@ -66,7 +66,7 @@
         GROUP BY u.id
     </select>
 
-    <insert id="insertUser" parameterType="com.blackfish.entity.User">
+    <insert id="insertUser" parameterType="com.blackfish.shiro.entity.User">
         INSERT into sys_user
             (userId, userName, password, userRemarks)
         VALUES (#{user.userId}, #{user.userName}, #{user.password}, #{user.userRemarks})

@@ -1,10 +1,7 @@
 package com.blackfish.service;
 
-import com.blackfish.entity.SysRole;
-import com.blackfish.mapper.SysRoleDao;
-import com.sun.jnlp.BasicServiceImpl;
+import com.blackfish.shiro.entity.SysRole;
 
-import javax.jnlp.BasicService;
 import java.util.List;
 
 /**

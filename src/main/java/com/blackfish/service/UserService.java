@@ -1,8 +1,8 @@
 package com.blackfish.service;
 
-import com.blackfish.entity.User;
-import com.blackfish.vo.R;
-import com.blackfish.vo.TokenVO;
+import com.blackfish.shiro.entity.User;
+import com.blackfish.shiro.vo.R;
+import com.blackfish.shiro.vo.TokenVO;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

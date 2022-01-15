@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.blackfish.mapper.SysRoleDao">
-  <resultMap id="BaseResultMap" type="com.blackfish.entity.SysRole">
+<mapper namespace="com.blackfish.shiro.mapper.SysRoleDao">
+  <resultMap id="BaseResultMap" type="com.blackfish.shiro.entity.SysRole">
     <id column="roleId" jdbcType="VARCHAR" property="roleId" />
     <result column="roleName" jdbcType="VARCHAR" property="roleName" />
     <result column="roleRemarks" jdbcType="VARCHAR" property="roleRemarks" />
@@ -19,11 +19,11 @@
     delete from sys_role
     where roleId = #{roleId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" keyColumn="roleId" keyProperty="roleId" parameterType="com.blackfish.entity.SysRole" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="roleId" keyProperty="roleId" parameterType="com.blackfish.shiro.entity.SysRole" useGeneratedKeys="true">
     insert into sys_role (roleName, roleRemarks)
     values (#{roleName,jdbcType=VARCHAR}, #{roleRemarks,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="roleId" keyProperty="roleId" parameterType="com.blackfish.entity.SysRole" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="roleId" keyProperty="roleId" parameterType="com.blackfish.shiro.entity.SysRole" useGeneratedKeys="true">
     insert into sys_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleName != null">
@@ -42,7 +42,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.entity.SysRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackfish.shiro.entity.SysRole">
     update sys_role
     <set>
       <if test="roleName != null">
@@ -54,7 +54,7 @@
     </set>
     where roleId = #{roleId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.blackfish.entity.SysRole">
+  <update id="updateByPrimaryKey" parameterType="com.blackfish.shiro.entity.SysRole">
     update sys_role
     set roleName = #{roleName,jdbcType=VARCHAR},
       roleRemarks = #{roleRemarks,jdbcType=VARCHAR}

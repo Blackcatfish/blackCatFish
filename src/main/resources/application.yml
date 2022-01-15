@@ -8,9 +8,9 @@ spring:
   #指定数据库相关信息
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://xxx:3306/black_cat_fish?useUnicode=true&characterEncoding=utf-8&autoReconnect=
+    url: jdbc:mysql://101.132.36.16:3306/black_cat_fish?useUnicode=true&characterEncoding=utf-8&autoReconnect=
     username: root
-    password: password
+    password: 1qaz@WSX
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 5
@@ -25,6 +25,23 @@ spring:
     database: 0
     host: 101.132.36.16
     port: 6380
+  rabbitmq:
+    port: 5672
+    username: guest
+    password: guest
+    host: 101.132.36.16
+    publisher-returns: true
+    listener:
+      simple:
+        retry:
+          enabled: true
+        default-requeue-rejected: false
+      direct:
+        retry:
+          initial-interval:
+          max-attempts: 6
+        missing-queues-fatal: true
+
 #  data:
 #    mongodb:
 #      uri: mongodb://admin:123456@101.132.36.16:27017/db1
@@ -32,7 +49,7 @@ spring:
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: com.blackfish.entity
+  type-aliases-package: com.blackfish.shiro.entity
   configuration:
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true

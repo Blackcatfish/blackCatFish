@@ -1,6 +1,6 @@
 package com.blackfish.service;
 
-import com.blackfish.entity.SysPermissions;
+import com.blackfish.shiro.entity.SysPermissions;
 
 import java.util.List;
 

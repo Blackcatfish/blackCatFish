@@ -1,10 +1,10 @@
 package com.blackfish.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.blackfish.entity.SysRole;
-import com.blackfish.entity.UserRole;
-import com.blackfish.mapper.SysRoleDao;
-import com.blackfish.mapper.UserRoleDao;
+import com.blackfish.shiro.entity.SysRole;
+import com.blackfish.shiro.entity.UserRole;
+import com.blackfish.shiro.mapper.SysRoleDao;
+import com.blackfish.shiro.mapper.UserRoleDao;
 import com.blackfish.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

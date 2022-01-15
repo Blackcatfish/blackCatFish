@@ -1,13 +1,13 @@
 package com.blackfish.service.impl;
 
-import com.blackfish.config.JWTUtil;
-import com.blackfish.entity.User;
-import com.blackfish.mapper.UserMapper;
+import com.blackfish.shiro.config.JWTUtil;
+import com.blackfish.shiro.entity.User;
+import com.blackfish.shiro.mapper.UserMapper;
 import com.blackfish.service.UserDomainService;
 import com.blackfish.service.UserService;
 import com.blackfish.util.CommonsUtils;
-import com.blackfish.vo.R;
-import com.blackfish.vo.TokenVO;
+import com.blackfish.shiro.vo.R;
+import com.blackfish.shiro.vo.TokenVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
