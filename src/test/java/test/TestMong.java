@@ -1,7 +1,7 @@
 //package test;
 //
 //import javafx.application.Application;
-//import org.junit.Test;
+//import org.junit.Student;
 //import org.junit.runner.RunWith;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.context.SpringBootTest;
@@ -22,7 +22,7 @@
 //public class TestMong {
 //    @Resource
 //    private MongoTemplate mongoTemplate;
-//    @Test
+//    @Student
 //    public void test(){
 //        mongoTemplate.executeCommand("");
 //        System.out.println(mongoTemplate);
